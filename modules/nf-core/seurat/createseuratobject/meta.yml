@@ -1,0 +1,57 @@
+---
+# yaml-language-server: $schema=https://raw.githubusercontent.com/nf-core/modules/master/modules/meta-schema.json
+name: "seurat_createseuratobject"
+## TODO nf-core: Add a description of the module and list keywords
+description: create Seurat object from genes x samples table; basic QC
+keywords:
+  - RNA
+  - transcriptome
+  - QC
+tools:
+  - "seurat":
+      ## TODO nf-core: Add a description and other details for the software below
+      description: "R toolkit for single cell genomics"
+      homepage: "https://satijalab.org/seurat/"
+      documentation: "https://satijalab.org/seurat/reference/"
+      tool_dev_url: "https://github.com/satijalab/seurat"
+      doi: "https://www.nature.com/articles/s41587-023-01767-y"
+      licence: "MIT"
+
+## TODO nf-core: Add a description of all of the variables used as input
+input:
+  # Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+
+  ## TODO nf-core: Delete / customise this example input
+  - bam:
+      type: file
+      description: Sorted BAM/CRAM/SAM file
+      pattern: "*.{bam,cram,sam}"
+
+## TODO nf-core: Add a description of all of the variables used as output
+output:
+  #Only when we have meta
+  - meta:
+      type: map
+      description: |
+        Groovy Map containing sample information
+        e.g. `[ id:'sample1', single_end:false ]`
+
+  - versions:
+      type: file
+      description: File containing software versions
+      pattern: "versions.yml"
+  ## TODO nf-core: Delete / customise this example output
+  - rds:
+      type: file
+      description: Seurat Object as rds file
+      pattern: "*.{rds}"
+
+authors:
+  - "@gesavoigt"
+maintainers:
+  - "@gesavoigt"

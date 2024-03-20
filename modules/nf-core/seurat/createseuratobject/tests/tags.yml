@@ -1,0 +1,2 @@
+seurat/createseuratobject:
+  - "modules/nf-core/seurat/createseuratobject/**"
